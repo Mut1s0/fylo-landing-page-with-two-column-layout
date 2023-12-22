@@ -1,10 +1,33 @@
+import { Business, CTA, Footer, Hero, Navigation } from "./components";
 
 function App() {
 
   return(
+    <main>
 
-    <h1>App</h1>
-    
+      <header>
+
+        <Navigation />
+
+        <Hero />
+
+      </header>
+
+      <article>
+
+        <Business />
+
+        <CTA />
+
+      </article>
+
+      <footer>
+
+        <Footer />
+
+      </footer>
+
+    </main>
   )
 }
 
