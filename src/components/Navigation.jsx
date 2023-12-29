@@ -7,17 +7,17 @@ function Navigation() {
 
         <section className="max-w-[90%] mx-auto font-raleway">
 
-            <div className="flex justify-between items-center py-[50px]">
+            <div className="flex justify-between items-center py-[70px]">
 
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo" className="w-[80px] md:w-[160px]" />
 
-                <div className="flex gap-[70px]">
+                <div className="flex gap-[10px] sm:gap-[70px]">
 
                     {navigation.map((nav) => (
 
                         <ul key={nav.id}>
 
-                            <li className="font-regularRaleway text-[1.3rem]">{nav.text}</li>
+                            <li className="font-regularRaleway text-[.8rem] sm:text-[1.3rem]">{nav.text}</li>
 
                         </ul>
 

@@ -24,8 +24,16 @@ export default {
         regularRaleway: "400",
         bold: "700",
         regularOpenSans: "400"
-      }
+      },
     },
+    screens: {
+      xs: "480px",
+      ss: "620px",
+      sm: "768px",
+      md: "1024px",
+      lg: "1200px",
+      xl: "1700px",
+    }
   },
   plugins: [],
 }
