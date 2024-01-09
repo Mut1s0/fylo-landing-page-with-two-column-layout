@@ -6,6 +6,9 @@ import quotes from "./icon-quotes.svg";
 import illustrationOne from "./illustration-1.svg";
 import illustrationTwo from "./illustration-2.svg";
 import iconArrow from "./icon-arrow.svg";
+import facebook from "./facebook-logo-24.png"
+import instagram from "./instagram-logo-24.png"
+import twitter from "./twitter-logo-24.png"
 
 export {
     avatarTestimonial,
@@ -15,5 +18,8 @@ export {
     quotes,
     illustrationOne,
     illustrationTwo,
-    iconArrow
+    iconArrow,
+    facebook,
+    instagram,
+    twitter
 };

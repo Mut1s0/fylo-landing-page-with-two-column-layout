@@ -1,75 +1,92 @@
-// import { useState } from "react";
-// import FormInputs from "../components/FormInputs";
+/* eslint-disable no-useless-escape */
+import { useState } from "react";
 import { illustrationOne } from "../assets";
 
 function Hero() {
 
-    // const [ values, setValues ] = useState({
-    //     email: ""
-    // });
+    // State to store value
+    const [ email, setEmail ] = useState('');
 
-    // const inputs = [
-    //     {
-    //         id: 1,
-    //         name: "email",
-    //         type: "email",
-    //         placeholder: "Enter your Email",
-    //         errorMessage: "Please check your email",
-    //         required: true
-    //     }
-    // ]
+    // State to store Error Messages
+    const [emailError, setEmailError] = useState('');
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    // }
+    // Function to validate Email
+    function validateEmail(email) {
 
-    // const onChange = (e) => {
-    //     setValues({ ...values, [e.target.name]: e.target.value })
-    // }
+        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
+        let isEmailValid = true;
 
-    // console.log(values);
+        setEmailError('');
+
+        if (email === '') {
+            setEmailError("Email cannot be blank");
+            isEmailValid = false;
+            return isEmailValid;
+        }
+
+        if (!emailRegex.test(email)) {
+            setEmailError('Please check your email');
+            isEmailValid = false;
+            return isEmailValid;
+        }
+
+        return isEmailValid;
+    }
+
+    // Function that will run when the user submits form
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let isEmailValid = validateEmail(email);
+
+        // Allow user to submit form
+        if(isEmailValid) {
+            console.log(`Email: ${email}`);
+        }else {
+            alert("Form data is incorrect")
+        }
+    }
 
     return(
 
-        <section className="max-w-[90%] mx-auto">
+        <section className="max-w-[90%] mx-auto py-[3rem]">
 
-            <div className="flex flex-col-reverse md:flex-row items-center">
+            <div className="sm:grid sm:grid-cols-2 sm:gap-[100px]">
 
-                <article className="text-center md:text-left w-full">
+                <img src={illustrationOne} alt="Illustration" className="w-full sm:col-end-3 sm:row-start-1" />
 
-                    <h1 className="font-raleway font-bold text-[1.2rem] sm:text-[1.5rem] md:text-[1.9rem] lg:text-[2.4rem] xl:text-[3.2rem] pb-[20px]">All your files in one secure <br /> location, accessible <br className="sm:hidden"/> anywhere.</h1>
+                <article className="sm:col-start-1 md:pt-[5rem]">
 
-                    <p className="font-raleway font-bold text-[.7rem] md:text-[.8rem] lg:text-[1.1rem] xl:text-[1.4rem]">Fylo stores your most important files in one <br className="sm:hidden"/> secure location. Access <br className="hidden sm:block"/> them wherever you <br className="sm:hidden"/> need, share and collaborate with friends, <br className="sm:hidden"/> family, <br className="hidden sm:block"/> and co-workers.</p>
+                    <div className="text-center sm:text-left">
 
-                    {/* <div>
-                        
-                        <form onSubmit={handleSubmit}>
+                        <h1 className="font-raleway font-bold text-[1.2rem] xs:text-[2rem] lg:text-[2.2rem] xl:text-[3rem] mb-3">All your files in one secure <br className="block" /> location, accessible <br className="block sm:hidden"/> anywhere.</h1>
 
-                            {inputs.map((input) => (
+                        <p className="text-[.7rem] xs:text-[.9rem] lg:text-[1rem] xl:text-[1.3rem] font-raleway font-regularRaleway">Fylo stores your most important files in one <br className="block sm:hidden"/> secure location. Access <br className="hidden sm:block"/> them wherever you <br className="block sm:hidden"/> need, share and collaborate with friends, <br className="block sm:hidden"/> family, <br className="hidden sm:block"/> and co-workers.</p>
 
-                                <FormInputs
-                                    key={input.id}
-                                    {...input}
-                                    value={values[input.name]}
-                                    onChange={onChange}
-                                />
+                    </div>
 
-                            ))}
+                    {/* Form Section */}
 
-                            <button>Get Started</button>
+                    <form className="flex flex-col md:flex-row gap-5 mt-5" onSubmit={handleSubmit} noValidate>
 
-                        </form>
+                        <div className="md:w-[600px] lg:w-[1000px]">
 
-                    </div> */}
+                            <input 
+                                type="email" 
+                                className="border-2 border-desaturatedBlue py-3 pl-5 w-full rounded-[5px]" 
+                                placeholder="Enter your email..."
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            
+                            {emailError && <p className="text-red-500 mt-2">{emailError}</p>}
+
+                        </div>
+
+                        <button type="submit" className="bg-brightBlue text-lightGrayishBlue font-raleway font-bold w-full py-[.8rem] md:py-[.6rem] text-[1.1rem] rounded-[5px] h-[50px]">Get Started</button>
+
+                    </form>
 
                 </article>
-
-                <div className="w-full">
-
-                    <img src={illustrationOne} alt="Illustration One" className="md:w-full" />
-
-                </div>
-
 
             </div>
 
